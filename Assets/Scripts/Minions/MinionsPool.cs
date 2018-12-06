@@ -6,7 +6,12 @@ using UnityEngine;
 public class MinionsPool : MonoBehaviour
 {
     [SerializeField] bool showDebugLogs = false;
+#if UNITY_WEBGL
+    [SerializeField] int poolSize = 150;
+#else
     [SerializeField] int poolSize = 200;
+#endif
+
     int spawnedMinionsCount;
 
     List<Minion> minions;

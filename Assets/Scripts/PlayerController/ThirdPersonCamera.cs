@@ -39,6 +39,12 @@ public class ThirdPersonCamera : MonoBehaviour
 
         defaultPos = transform.position;
         defaultRot = transform.rotation;
+
+#if UNITY_WEBGL
+#if !UNITY_EDITOR
+        mouseSensitivityRange = 0.1f * mouseSensitivityRange;
+#endif
+#endif
     }
 
     public Vector3 FocalPoint { get; private set; }
@@ -52,6 +58,7 @@ public class ThirdPersonCamera : MonoBehaviour
         transform.rotation = defaultRot;
         yaw = 0.0f;
         pitch = 0.0f;
+
     }
 
     public void ManualUpdate()
