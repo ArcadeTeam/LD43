@@ -60,12 +60,12 @@ public class MinionSpawnerFollow : MonoBehaviour
         for (int i = 0; i < retries; i++)
         {
             Vector2 position = radius * Random.insideUnitCircle;
-            Ray spawnRay = new Ray(new Vector3(_transform.position.x + position.x, 50.0f, _transform.position.z + position.y), Vector3.down);
+            Ray spawnRay = new Ray(new Vector3(_transform.position.x + position.x, 150.0f, _transform.position.z + position.y), Vector3.down);
 
             
 
             RaycastHit hit;
-            if (Physics.Raycast(spawnRay.origin, Vector3.down, out hit, 100.0f, -5, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(spawnRay.origin, Vector3.down, out hit, 200.0f, -5, QueryTriggerInteraction.Ignore))
             {
 
                 Minion enemy = MinionsPool.Instance.Get();
@@ -79,13 +79,13 @@ public class MinionSpawnerFollow : MonoBehaviour
                 enemy.transform.localScale = Vector3.zero;
                 enemy.transform.position = hit.point + 0.5f * Vector3.up;
 
-                Debug.DrawRay(spawnRay.origin, 100.0f * Vector2.down, Color.green, 1.0f);
+                Debug.DrawRay(spawnRay.origin, 200.0f * Vector2.down, Color.green, 1.0f);
 
                 break;
             }
             else
             {
-                Debug.DrawRay(spawnRay.origin, 100.0f * Vector2.down, Color.red, 1.0f);
+                Debug.DrawRay(spawnRay.origin, 200.0f * Vector2.down, Color.red, 1.0f);
             }
         }
     }

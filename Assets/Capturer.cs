@@ -13,7 +13,7 @@ public class Capturer : MonoBehaviour
         absorber = FindObjectOfType<Absorber>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (absorber.Absorbing && gm.GetAmmo() < gm.MaxAmmo)
         {

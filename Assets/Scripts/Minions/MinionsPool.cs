@@ -92,6 +92,11 @@ public class MinionsPool : MonoBehaviour
 
                 Minion minion = minions[0];
 
+                if (minion == null)
+                {
+                    Debug.Break();
+                }
+
                 minion.transform.parent = null;
                 minion.gameObject.SetActive(true);
                 minions.RemoveAt(0);
@@ -115,7 +120,13 @@ public class MinionsPool : MonoBehaviour
                 if (showDebugLogs) Debug.Log("Destruyendo el minion (excede el tamaño del pool): " + minions.Count);
 
                 minions.Remove(minion);
+
                 Destroy(minion.gameObject);
+
+                if (minions.Count > 0 && minions[0] == null)
+                {
+                    Debug.Break();
+                }
 
                 spawnedMinionsCount--;
                 return;
